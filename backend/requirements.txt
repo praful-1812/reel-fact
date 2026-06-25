@@ -1,0 +1,32 @@
+# ── Web framework ─────────────────────────────────────────────
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+python-multipart==0.0.9
+
+# ── Database (async SQLite) ───────────────────────────────────
+sqlalchemy==2.0.35
+aiosqlite==0.20.0
+greenlet>=3.1.0          # required by SQLAlchemy's async engine
+
+# ── Config / models ───────────────────────────────────────────
+# Loosened so the newer litellm (below) can pull a compatible pydantic.
+pydantic>=2.9
+pydantic-settings>=2.5
+python-dotenv==1.0.1
+
+# ── LLM (multi-provider) ──────────────────────────────────────
+# 1.61+ is required for Python 3.13 (older versions import the removed `imghdr`).
+litellm>=1.61.0
+
+# ── Reel download ─────────────────────────────────────────────
+# yt-dlp changes often to keep up with Instagram — keep it fresh.
+yt-dlp>=2024.12.13
+
+# ── Transcription (local Whisper, no API key needed) ──────────
+# Optional: only required when TRANSCRIPTION_BACKEND=faster-whisper (the default).
+# If you only use the OpenAI/Groq backends you can remove this line.
+faster-whisper>=1.0.3
+
+# NOTE: ffmpeg is a SYSTEM dependency (not pip). Install it separately:
+#   macOS:  brew install ffmpeg
+#   Ubuntu: sudo apt install ffmpeg
